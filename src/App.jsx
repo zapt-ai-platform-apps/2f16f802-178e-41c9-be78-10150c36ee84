@@ -2,7 +2,7 @@ import { createSignal, onMount, createEffect, For, Show } from 'solid-js';
 import { createEvent, supabase } from './supabaseClient';
 import { Auth } from '@supabase/auth-ui-solid';
 import { ThemeSupa } from '@supabase/auth-ui-shared';
-import logo from '/assets/logo-dark-navy.png';
+import logo from './assets/logo-dark-navy.png';
 import { FiArrowRightCircle } from 'solid-icons/fi';
 
 function App() {
