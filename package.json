@@ -15,7 +15,8 @@
     "@supabase/supabase-js": "^2.45.4",
     "drizzle-orm": "^0.33.0",
     "solid-js": "^1.8.22",
-    "solid-markdown": "^2.0.13"
+    "solid-markdown": "^2.0.13",
+    "solid-icons": "^1.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",

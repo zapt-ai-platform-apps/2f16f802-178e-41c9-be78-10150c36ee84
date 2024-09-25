@@ -2,6 +2,8 @@ import { createSignal, onMount, createEffect, For, Show } from 'solid-js';
 import { createEvent, supabase } from './supabaseClient';
 import { Auth } from '@supabase/auth-ui-solid';
 import { ThemeSupa } from '@supabase/auth-ui-shared';
+import logo from '/assets/logo-dark-navy.png';
+import { FiArrowRightCircle } from 'solid-icons/fi';
 
 function App() {
   const [user, setUser] = createSignal(null);
@@ -153,18 +155,19 @@ function App() {
   });
 
   return (
-    <div class="min-h-screen bg-gradient-to-br from-green-100 to-blue-100 dark:from-gray-900 dark:to-gray-800 p-4 text-gray-800 dark:text-gray-200">
+    <div class="h-full bg-sound-wave bg-cover bg-center p-4 text-primary font-poppins">
       <Show
         when={currentPage() === 'homePage'}
         fallback={
-          <div class="flex items-center justify-center min-h-screen">
-            <div class="w-full max-w-md p-8 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
-              <h2 class="text-3xl font-bold mb-6 text-center text-green-600 dark:text-green-400">Sign in with ZAPT</h2>
+          <div class="flex items-center justify-center h-full">
+            <div class="w-full max-w-md p-8 bg-white rounded-xl shadow-lg">
+              <img src={logo} alt="Logo" class="mx-auto mb-6 w-24 h-24" />
+              <h2 class="text-3xl font-semibold mb-6 text-center text-primary">Sign in with ZAPT</h2>
               <a
                 href="https://www.zapt.ai"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-blue-500 dark:text-blue-400 hover:underline mb-6 block text-center"
+                class="text-secondary hover:underline mb-6 block text-center"
               >
                 Learn more about ZAPT
               </a>
@@ -180,9 +183,12 @@ function App() {
       >
         <div class="max-w-6xl mx-auto">
           <div class="flex justify-between items-center mb-8">
-            <h1 class="text-4xl font-bold text-green-600 dark:text-green-400">Workout Tracker</h1>
+            <div class="flex items-center space-x-4">
+              <img src={logo} alt="Logo" class="w-12 h-12" />
+              <h1 class="text-4xl font-semibold text-primary">Workout Tracker</h1>
+            </div>
             <button
-              class="bg-red-500 hover:bg-red-600 dark:bg-red-700 dark:hover:bg-red-600 text-white font-semibold py-2 px-6 rounded-full shadow-md focus:outline-none focus:ring-2 focus:ring-red-400 transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer"
+              class="bg-secondary hover:bg-accent text-white font-semibold py-2 px-6 rounded-full shadow-md focus:outline-none transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer"
               onClick={handleSignOut}
             >
               Sign Out
@@ -191,31 +197,31 @@ function App() {
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div class="col-span-1">
-              <h2 class="text-2xl font-bold mb-4 text-green-600 dark:text-green-400">Add New Workout</h2>
+              <h2 class="text-2xl font-semibold mb-4 text-primary">Add New Workout</h2>
               <form onSubmit={saveWorkout} class="space-y-4">
                 <input
                   type="text"
                   placeholder="Title"
                   value={newWorkout().title}
                   onInput={(e) => setNewWorkout({ ...newWorkout(), title: e.target.value })}
-                  class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-transparent box-border bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200"
+                  class="w-full p-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-secondary focus:border-transparent box-border text-primary"
                   required
                 />
                 <textarea
                   placeholder="Description"
                   value={newWorkout().description}
                   onInput={(e) => setNewWorkout({ ...newWorkout(), description: e.target.value })}
-                  class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-transparent box-border bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200"
+                  class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-secondary focus:border-transparent box-border text-primary"
                 />
                 <input
                   type="date"
                   value={newWorkout().date}
                   onInput={(e) => setNewWorkout({ ...newWorkout(), date: e.target.value })}
-                  class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-transparent box-border bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200"
+                  class="w-full p-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-secondary focus:border-transparent box-border text-primary"
                 />
                 <button
                   type="submit"
-                  class={`w-full px-6 py-3 bg-green-500 dark:bg-green-600 text-white rounded-lg hover:bg-green-600 dark:hover:bg-green-700 transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer ${loading() ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  class={`w-full px-6 py-3 bg-secondary hover:bg-accent text-white rounded-full transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer ${loading() ? 'opacity-50 cursor-not-allowed' : ''}`}
                   disabled={loading()}
                 >
                   <Show when={loading()}>Saving...</Show>
@@ -225,14 +231,14 @@ function App() {
             </div>
 
             <div class="col-span-1">
-              <h2 class="text-2xl font-bold mb-4 text-blue-600 dark:text-blue-400">Add Diet Entry</h2>
+              <h2 class="text-2xl font-semibold mb-4 text-primary">Add Diet Entry</h2>
               <form onSubmit={saveDietEntry} class="space-y-4">
                 <input
                   type="text"
                   placeholder="Food Item"
                   value={newDietEntry().foodItem}
                   onInput={(e) => setNewDietEntry({ ...newDietEntry(), foodItem: e.target.value })}
-                  class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent box-border bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200"
+                  class="w-full p-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-secondary focus:border-transparent box-border text-primary"
                   required
                 />
                 <input
@@ -240,18 +246,18 @@ function App() {
                   placeholder="Calories"
                   value={newDietEntry().calories}
                   onInput={(e) => setNewDietEntry({ ...newDietEntry(), calories: e.target.value })}
-                  class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent box-border bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200"
+                  class="w-full p-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-secondary focus:border-transparent box-border text-primary"
                   required
                 />
                 <input
                   type="date"
                   value={newDietEntry().date}
                   onInput={(e) => setNewDietEntry({ ...newDietEntry(), date: e.target.value })}
-                  class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent box-border bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200"
+                  class="w-full p-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-secondary focus:border-transparent box-border text-primary"
                 />
                 <button
                   type="submit"
-                  class={`w-full px-6 py-3 bg-blue-500 dark:bg-blue-600 text-white rounded-lg hover:bg-blue-600 dark:hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer ${loading() ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  class={`w-full px-6 py-3 bg-secondary hover:bg-accent text-white rounded-full transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer ${loading() ? 'opacity-50 cursor-not-allowed' : ''}`}
                   disabled={loading()}
                 >
                   <Show when={loading()}>Saving...</Show>
@@ -261,11 +267,11 @@ function App() {
             </div>
 
             <div class="col-span-1">
-              <h2 class="text-2xl font-bold mb-4 text-purple-600 dark:text-purple-400">Additional Features</h2>
+              <h2 class="text-2xl font-semibold mb-4 text-primary">Additional Features</h2>
               <div class="space-y-4">
                 <button
                   onClick={() => setCurrentPage('routinePage')}
-                  class="w-full px-6 py-3 bg-purple-500 dark:bg-purple-600 text-white rounded-lg hover:bg-purple-600 dark:hover:bg-purple-700 transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer"
+                  class="w-full px-6 py-3 bg-secondary hover:bg-accent text-white rounded-full transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer"
                 >
                   Manage Routines
                 </button>
@@ -275,15 +281,15 @@ function App() {
 
           <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <h3 class="text-xl font-bold mb-2 text-green-600 dark:text-green-400">Recent Workouts</h3>
+              <h3 class="text-xl font-semibold mb-2 text-primary">Recent Workouts</h3>
               <div class="space-y-4 max-h-[calc(100vh-400px)] overflow-y-auto pr-4">
                 <Show when={!loading()} fallback={<p>Loading...</p>}>
                   <For each={workouts()}>
                     {(workout) => (
-                      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105">
-                        <p class="font-semibold text-lg text-green-600 dark:text-green-400 mb-2">{workout.title}</p>
-                        <p class="text-gray-700 dark:text-gray-300">{workout.description}</p>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Date: {new Date(workout.date).toLocaleDateString()}</p>
+                      <div class="bg-white p-6 rounded-xl shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+                        <p class="font-semibold text-lg text-primary mb-2">{workout.title}</p>
+                        <p class="text-gray-700">{workout.description}</p>
+                        <p class="text-sm text-gray-500 mt-2">Date: {new Date(workout.date).toLocaleDateString()}</p>
                       </div>
                     )}
                   </For>
@@ -291,15 +297,15 @@ function App() {
               </div>
             </div>
             <div>
-              <h3 class="text-xl font-bold mb-2 text-blue-600 dark:text-blue-400">Recent Diet Entries</h3>
+              <h3 class="text-xl font-semibold mb-2 text-primary">Recent Diet Entries</h3>
               <div class="space-y-4 max-h-[calc(100vh-400px)] overflow-y-auto pr-4">
                 <Show when={!loading()} fallback={<p>Loading...</p>}>
                   <For each={dietEntries()}>
                     {(entry) => (
-                      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105">
-                        <p class="font-semibold text-lg text-blue-600 dark:text-blue-400 mb-2">{entry.foodItem}</p>
-                        <p class="text-gray-700 dark:text-gray-300">Calories: {entry.calories}</p>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Date: {new Date(entry.date).toLocaleDateString()}</p>
+                      <div class="bg-white p-6 rounded-xl shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+                        <p class="font-semibold text-lg text-primary mb-2">{entry.foodItem}</p>
+                        <p class="text-gray-700">Calories: {entry.calories}</p>
+                        <p class="text-sm text-gray-500 mt-2">Date: {new Date(entry.date).toLocaleDateString()}</p>
                       </div>
                     )}
                   </For>

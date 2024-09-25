@@ -1,6 +1,6 @@
 # Workout Tracker App
 
-Welcome to the Workout Tracker App! This app helps you create and track your workouts, diet, and routines. Now featuring a **dark theme** for a comfortable viewing experience in low-light environments.
+Welcome to the Workout Tracker App! This app helps you create and track your workouts, diet, and routines. Experience a modern, energetic design with our new branding updates.
 
 ## User Journeys
 
@@ -11,11 +11,19 @@ Welcome to the Workout Tracker App! This app helps you create and track your wor
 3. Use the authentication component to sign in using Google, Facebook, Apple, magic link, or email.
 4. After successful authentication, you'll be redirected to the home page.
 
-### 2. Experience the Dark Theme
+### 2. Explore the New Design
 
-- The app now features a dark theme by default.
-- Enjoy a sleek interface that's easier on the eyes, especially in low-light settings.
-- All components, text, and backgrounds have been optimized for the dark theme.
+- **Color Palette**: Enjoy a bold and energetic feel with our new colors:
+  - **Primary Color**: Dark Navy (#060F38) for text and key materials.
+  - **Secondary Color**: Purple (#763BEA) for icons, call-to-action buttons, and highlights.
+  - **Accent Color**: Neon Yellow (#CBFF2E) used sparingly for emphasis on buttons.
+  - **White** (#FFFFFF) for text on darker backgrounds.
+- **Typography**: Modern and clean look with Poppins font.
+  - **Headlines**: Poppins SemiBold.
+  - **Body Text**: Poppins Regular.
+- **Imagery**: Abstract sound waves add a futuristic touch as backgrounds and section dividers.
+- **Buttons and Navigation**: Rounded and friendly buttons in brand colors with clear legibility.
+- **Iconography**: Minimal and modern icons convey actions quickly.
 
 ### 3. Add a New Workout
 
@@ -50,7 +58,7 @@ Welcome to the Workout Tracker App! This app helps you create and track your wor
 
 ## Additional Features
 
-- **Dark Theme**: The app now uses a dark theme for a modern and visually appealing interface.
+- **Modern Design**: Bold colors and clean typography for an energetic and professional look.
 - **Responsive Design**: The app is responsive and works well on all screen sizes.
 - **Loading States**: While data is being fetched or saved, the app displays loading indicators.
 - **Form Validation**: Required fields are enforced, ensuring that essential information is provided.
@@ -61,4 +69,4 @@ Welcome to the Workout Tracker App! This app helps you create and track your wor
 - **Manage Routines**: A placeholder for managing workout routines, to be implemented in future updates.
 - **Integration with External APIs**: Potential to integrate with nutrition or exercise APIs for enhanced functionality.
 
-Enjoy your journey towards a healthier you with the Workout Tracker App's sleek new dark theme!
+Embark on your fitness journey with the Workout Tracker App's sleek and energetic new design!
